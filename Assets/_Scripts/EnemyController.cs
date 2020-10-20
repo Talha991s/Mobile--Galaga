@@ -4,9 +4,11 @@ using UnityEngine;
 
 public class EnemyController : MonoBehaviour
 {
-    public float horizontalSpeed;
-    public float horizontalBoundary;
+    //public float horizontalSpeed;
+    //public float horizontalBoundary;
     public float direction;
+    public float verticalSpeed;
+    public float verticalBoundary;
 
     // Update is called once per frame
     void Update()
@@ -17,19 +19,19 @@ public class EnemyController : MonoBehaviour
 
     private void _Move()
     {
-        transform.position += new Vector3(horizontalSpeed * direction * Time.deltaTime, 0.0f, 0.0f);
+        transform.position += new Vector3(0.0f, verticalSpeed * direction * Time.deltaTime, 0.0f);
     }
 
     private void _CheckBounds()
     {
         // check right boundary
-        if (transform.position.x >= horizontalBoundary)
+        if (transform.position.y >= verticalBoundary)
         {
             direction = -1.0f;
         }
 
         // check left boundary
-        if (transform.position.x <= -horizontalBoundary)
+        if (transform.position.y <= -verticalBoundary)
         {
             direction = 1.0f;
         }
