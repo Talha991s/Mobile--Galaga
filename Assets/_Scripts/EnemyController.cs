@@ -1,4 +1,14 @@
-﻿using System.Collections;
+﻿/*
+ Filename: EnemyController.cs
+ Author: Salick Talhah
+ Student Number: 101214166
+ Date last modified: 20/10/2020
+ Description: This file control the enemy movements.
+ Revision History:
+ 20/10/2020
+ */
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -19,18 +29,19 @@ public class EnemyController : MonoBehaviour
 
     private void _Move()
     {
+        // setting the vertical speed (y axis) for the enemy.
         transform.position += new Vector3(0.0f, verticalSpeed * direction * Time.deltaTime, 0.0f);
     }
 
     private void _CheckBounds()
     {
-        // check right boundary
+        // check up boundary
         if (transform.position.y >= verticalBoundary)
         {
             direction = -1.0f;
         }
 
-        // check left boundary
+        // check down boundary
         if (transform.position.y <= -verticalBoundary)
         {
             direction = 1.0f;

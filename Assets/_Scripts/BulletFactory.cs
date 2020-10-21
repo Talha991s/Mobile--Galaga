@@ -1,4 +1,14 @@
-﻿using System.Collections;
+﻿/*
+ Filename: BulletFactory.cs
+ Author: Salick Talhah
+ Student Number: 101214166
+ Date last modified: 20/10/2020
+ Description: This file store and load the bullets in the scene
+ Revision History:
+ 20/10/2020
+ */
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -23,7 +33,7 @@ public class BulletFactory : MonoBehaviour
         {
             case BulletType.REGULAR:
                 tempBullet = Instantiate(regularBullet);
-                tempBullet.GetComponent<BulletController>().damage = 10;
+                tempBullet.GetComponent<BulletController>().damage = 10;  //setting the amount of damage to respective bullets
                 break;
             case BulletType.FAT:
                 tempBullet = Instantiate(fatBullet);

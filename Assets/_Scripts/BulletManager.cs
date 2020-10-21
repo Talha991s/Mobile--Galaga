@@ -1,4 +1,14 @@
-﻿using System.Collections;
+﻿/*
+ Filename: BulletManager.cs
+ Author: Salick Talhah
+ Student Number: 101214166
+ Date last modified: 20/10/2020
+ Description: This file decide the distribution of bullet
+ Revision History:
+ 20/10/2020
+ */
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -14,7 +24,7 @@ public class BulletManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        _BuildBulletPool();
+        _BuildBulletPool();  // setting a pool of bullet
     }
 
     private void _BuildBulletPool()
@@ -31,6 +41,7 @@ public class BulletManager : MonoBehaviour
 
     public GameObject GetBullet(Vector3 position)
     {
+        //firing bullet fron the pool
         var newBullet = m_bulletPool.Dequeue();
         newBullet.SetActive(true);
         newBullet.transform.position = position;
@@ -44,6 +55,7 @@ public class BulletManager : MonoBehaviour
 
     public void ReturnBullet(GameObject returnedBullet)
     {
+        //returning bullet back to the pool
         returnedBullet.SetActive(false);
         m_bulletPool.Enqueue(returnedBullet);
     }

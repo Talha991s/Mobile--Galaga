@@ -1,4 +1,14 @@
-﻿using System.Collections;
+﻿/*
+ Filename: PlayerController.cs
+ Author: Salick Talhah
+ Student Number: 101214166
+ Date last modified: 20/10/2020
+ Description: This file control the player movement upon screen touch.
+ Revision History:
+ 20/10/2020
+ */
+
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using UnityEditor;
@@ -29,6 +39,7 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //setting the touch 
         m_touchesEnded = new Vector3();
         m_rigidBody = GetComponent<Rigidbody2D>();
     }
@@ -61,13 +72,13 @@ public class PlayerController : MonoBehaviour
 
             if (worldTouch.y > transform.position.y)
             {
-                // direction is positive
+                // direction is positive on the y axis ----> UP
                 direction = 1.0f;
             }
 
             if (worldTouch.y < transform.position.y)
             {
-                // direction is negative
+                // direction is negative on the y axis ----> Down
                 direction = -1.0f;
             }
 
@@ -78,18 +89,19 @@ public class PlayerController : MonoBehaviour
         // keyboard support
         if (Input.GetAxis("Vertical") >= 0.1f) 
         {
-            // direction is positive
+            // direction is positive ---> UP
             direction = 1.0f;
         }
 
         if (Input.GetAxis("Vertical") <= -0.1f)
         {
-            // direction is negative
+            // direction is negative---> Down
             direction = -1.0f;
         }
 
         if (m_touchesEnded.y != 0.0f)
         {
+            // move on y axis depending of the value of unit per touch.
            transform.position = new Vector2(transform.position.x , Mathf.Lerp(transform.position.y, m_touchesEnded.y, verticalTValue));
         }
         else
@@ -102,13 +114,13 @@ public class PlayerController : MonoBehaviour
 
     private void _CheckBounds()
     {
-        // check right bounds
+        // check UP bounds
         if (transform.position.y >= verticalBoundary)
         {
             transform.position = new Vector3(transform.position.x, verticalBoundary, 0.0f);
         }
 
-        // check left bounds
+        // check DOWN bounds
         if (transform.position.y <= -verticalBoundary)
         {
             transform.position = new Vector3(transform.position.x, -verticalBoundary, 0.0f);
