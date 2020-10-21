@@ -4,9 +4,11 @@ using UnityEngine;
 
 public class BulletController : MonoBehaviour, IApplyDamage
 {
-    public float verticalSpeed;
-    public float verticalBoundary;
+   // public float verticalSpeed;
+   // public float verticalBoundary;
     public BulletManager bulletManager;
+    public float horizontalSpeed;
+    public float horizontalBoundary;
     public int damage;
     
     // Start is called before the first frame update
@@ -24,12 +26,12 @@ public class BulletController : MonoBehaviour, IApplyDamage
 
     private void _Move()
     {
-        transform.position += new Vector3(0.0f, verticalSpeed, 0.0f) * Time.deltaTime;
+        transform.position += new Vector3(horizontalSpeed,0.0f, 0.0f) * Time.deltaTime;
     }
 
     private void _CheckBounds()
     {
-        if (transform.position.y > verticalBoundary)
+        if (transform.position.x > horizontalBoundary)
         {
             bulletManager.ReturnBullet(gameObject);
         }
